@@ -1,0 +1,30 @@
+create table sales(
+	sale_id varchar(6),
+	product_id varchar(3), 
+	product_price varchar(7),
+	quantity varchar(3),
+	total_price varchar(10),
+	tax varchar(5),
+	discount varchar(5),
+	final_amount varchar(10),
+	date_of_sale timestamp default now(),
+
+	customer_fname varchar(20),
+	customer_lname varchar(20),
+	customer_contactno varchar(13),
+	customer_email varchar(30),
+	customer_address varchar(40),
+	customer_city varchar(20),
+	customer_state varchar(20),
+	customer_country varchar(13),
+	
+);
+
+
+
+
+
+
+create SEQUENCE sale_id_seq owned by sales.sale_id;
+alter table sales alter column sale_id set default nextval('sale_id_seq');
+update sales set sale_id =  nextval('sale_id_seq');

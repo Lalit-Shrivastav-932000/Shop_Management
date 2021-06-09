@@ -1,0 +1,35 @@
+create table suppliers(
+	supplier_id varchar(3),
+	fname varchar(20),
+	lname varchar(20),
+	contactno varchar(13),
+	email varchar(25),
+	address varchar(40),
+	city varchar(20),
+	state_name varchar(20),
+	country varchar(20),	
+
+	company_id varchar(4),
+	company_name varchar(30),
+	company_address varchar(40),
+	company_city varchar(20),
+	company_state varchar(20),
+	company_country varchar(20)
+
+	
+
+);
+
+
+
+
+
+
+create SEQUENCE supplier_id_seq owned by suppliers.supplier_id;
+alter table suppliers alter column supplier_id set default nextval('supplier_id_seq');
+update suppliers set supplier_id =  nextval('supplier_id_seq');
+
+
+create SEQUENCE supplier_company_id_seq owned by suppliers.company_id;
+alter table suppliers alter column company_id set default nextval('supplier_company_id_seq');
+update suppliers set company_id =  nextval('supplier_company_id_seq');

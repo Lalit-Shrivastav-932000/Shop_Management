@@ -1,0 +1,22 @@
+create table purchases(
+	purchase_id varchar(5),
+	supplier_id varchar(5),
+	category_id varchar(5),
+	product_id varchar(5),
+	price_per_unit varchar(7),
+	quantity varchar(4),
+	total_price varchar(20),
+	tax varchar(5),
+	total_amount varchar(20),
+	discount varchar(5),
+	amount_paid varchar(20),
+	purchase_date timestamp
+
+);
+
+alter table purchases add column purchase_id integer;
+
+
+create SEQUENCE purchase_id_seq owned by purchases.purchase_id;
+alter table purchases alter column purchase_id set default nextval('purchase_id_seq');
+update purchases set purchase_id =  nextval('purchase_id_seq');

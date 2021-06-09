@@ -1,0 +1,19 @@
+create table products(
+	product_id varchar(3),
+	product_name varchar(20),
+	category varchar(2),
+	price_per_unit varchar(7),
+	description varchar(50),
+	stock_units varchar(5),
+	avail boolean
+);
+
+
+
+alter table product add constraint prodcat_pkey foreign key(category) references categories(category_id);
+
+
+
+create SEQUENCE product_id_seq owned by products.product_id;
+alter table products alter column product_id set default nextval('product_id_seq');
+update products set product_id =  nextval('product_id_seq');

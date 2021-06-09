@@ -1,0 +1,18 @@
+
+create table categories(
+	category_id varchar(2),
+	category_name varchar(20),
+	description varchar(50),
+	tax_charge varchar(5)
+);
+
+insert into categories values('12', 'Gold 24Carat' , 'pure 99.99% gold', '3');
+
+
+
+
+create SEQUENCE category_id_seq owned by categories.category_id;
+alter table categories alter column category_id set default nextval('category_id_seq');
+
+//if you want to change already existed category_id
+update categories set category_id =  nextval('category_id_seq');
